@@ -1,6 +1,6 @@
 let runningTotal = 0;
 let buffer = '0';
-let previousOperator;
+let previousOperator = null;
 
 const screen = document.querySelector('.screen');
 
@@ -52,6 +52,13 @@ const handleSymbol = (symbol) => {
     case '×':
     case '÷':
       handleMath(symbol);
+      break;
+    case '=':
+      if (previousOperator === null) return;
+      flushOperation(parseInt(buffer));
+      previousOperator = null;
+      buffer = runningTotal;
+      runningTotal = 0;
       break;
     default:
       break;
