@@ -29,16 +29,28 @@ const handleMath = (symbol) => {
   buffer = '0';
 };
 
+const flushOperation = (intBuffer) => {
+  if (previousOperator === '+') {
+    runningTotal += intBuffer;
+  } else if (previousOperator === '-') {
+    runningTotal -= intBuffer;
+  } else if (previousOperator === '×') {
+    runningTotal *= intBuffer;
+  } else if (previousOperator === '÷') {
+    runningTotal /= intBuffer;
+  }
+};
+
 const handleSymbol = (symbol) => {
   switch (symbol) {
     case 'C':
       buffer = 0;
       runningTotal = 0;
       break;
-    case '&plus;':
-    case '&minus;':
-    case '&divide;':
-    case '&times;':
+    case '+':
+    case '-':
+    case '×':
+    case '÷':
       handleMath(symbol);
       break;
     default:
