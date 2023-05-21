@@ -12,7 +12,18 @@ const buttonClick = (value) => {
   }
 };
 
-const handleSymbol = (symbol) => {};
+const handleSymbol = (symbol) => {
+  switch (symbol) {
+    case 'C':
+      buffer = 0;
+      runningTotal = 0;
+      screen.innerText = buffer;
+      break;
+
+    default:
+      break;
+  }
+};
 
 const handleNumber = (numberString) => {
   if (buffer === '0') {
