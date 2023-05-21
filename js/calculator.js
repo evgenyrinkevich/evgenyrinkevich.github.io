@@ -20,7 +20,9 @@ const handleNumber = (numberString) => {
   } else {
     buffer += numberString;
   }
+  screen.innerText = buffer;
 };
+
 const init = () => {
   document.querySelector('.calc-buttons').addEventListener('click', (e) => {
     buttonClick(e.target.innerText);
