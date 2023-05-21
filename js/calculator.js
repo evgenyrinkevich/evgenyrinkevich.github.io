@@ -10,16 +10,23 @@ const buttonClick = (value) => {
   } else {
     handleNumber(value);
   }
+  screen.innerText = buffer;
 };
+
+const handleMath = (symbol) => {};
 
 const handleSymbol = (symbol) => {
   switch (symbol) {
     case 'C':
       buffer = 0;
       runningTotal = 0;
-      screen.innerText = buffer;
       break;
-
+    case '&plus;':
+    case '&minus;':
+    case '&divide;':
+    case '&times;':
+      handleMath(symbol);
+      break;
     default:
       break;
   }
@@ -31,7 +38,6 @@ const handleNumber = (numberString) => {
   } else {
     buffer += numberString;
   }
-  screen.innerText = buffer;
 };
 
 const init = () => {
