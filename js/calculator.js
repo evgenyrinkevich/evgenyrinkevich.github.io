@@ -13,7 +13,21 @@ const buttonClick = (value) => {
   screen.innerText = buffer;
 };
 
-const handleMath = (symbol) => {};
+const handleMath = (symbol) => {
+  if (buffer === '0') return;
+
+  const intBuffer = parseInt(buffer);
+
+  if (runningTotal === 0) {
+    runningTotal = intBuffer;
+  } else {
+    flushOperation(intBuffer);
+  }
+
+  previousOperator = symbol;
+
+  buffer = '0';
+};
 
 const handleSymbol = (symbol) => {
   switch (symbol) {
